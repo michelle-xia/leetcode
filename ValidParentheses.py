@@ -2,12 +2,20 @@ class Solution:
     def isValid(self, s):
         if s is None:
             return
-        
-        d = {'(': ')', '{': '}', '[': ']'}
-        stack = []      
+        o = ['(', '{', '[']
+        close = [')', '}', ']']
+        stack = []
+
         for c in s:
-            if stack and stack[-1] in d and d[stack[-1]] == c:
-                del stack[-1]
-            else:
+            if c in o:
                 stack.append(c)
-        return not stack
+            if c in close:
+                if len(stack) == 0:
+                    return False
+                match = stack.pop()
+                ind = o.index(match)
+                if c != close[ind]:
+                    return False
+        if len(stack) > 0:
+            return False
+        return True
