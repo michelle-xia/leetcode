@@ -33,4 +33,27 @@ class Solution:
                             q.append(tmp)
                         
         # depth first search for all paths to the final word
+        if endWord not in visited:
+            return []
         
+        output = []
+        
+        stack = []
+        
+        def dfs(w, stack):
+            
+            if w == endWord:
+                output.append(stack[:])
+                return
+            
+            stack.append(w)
+            
+            if w in adjacency_map:
+                for neighbor in adjacency_map[w]:
+                    dfs(neighbor, stack)
+
+            stack.pop()
+            
+        dfs(beginWord, stack)
+        
+        return [list(t) for t in set(tuple(element) for element in output)]
