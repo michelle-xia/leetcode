@@ -20,3 +20,23 @@ class Solution:
             if curr.right:
                 q.append([curr.right, level + 1])
         return final
+
+class Solution2:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if root is None:
+            return
+        
+        def traverse(node, level):
+            if node is None:
+                return
+            if level > len(out) - 1:
+                out.append([])
+                
+            out[level].append(node.val)
+            
+            traverse(node.left, level + 1) 
+            traverse(node.right, level + 1)
+            
+        out = []
+        traverse(root, 0)
+        return out
