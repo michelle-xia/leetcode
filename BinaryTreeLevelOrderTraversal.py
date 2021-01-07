@@ -22,7 +22,7 @@ class Solution:
         return final
 
 class Solution2:
-    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+    def levelOrder(self, root):
         if root is None:
             return
         
