@@ -5,7 +5,7 @@ class Solution:
         if len(nums) == 1:
             return [nums[:]]
         
-        for i in range(len(nums)):
+        for _ in range(len(nums)):
             val = nums.pop(0)
             permutations = self.permute(nums)
 
